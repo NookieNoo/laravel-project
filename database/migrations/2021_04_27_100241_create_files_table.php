@@ -16,12 +16,11 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
-            $table->decimal('size');
-            $table->text('path');
-            $table->unsignedInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('file_roles');
             $table->unsignedInteger('extension_id');
-            $table->foreign('extension_id')->references('id')->on('file_extensions');
+            $table->decimal('size');
+            $table->unsignedInteger('role_id');
+            $table->unsignedInteger('ed_id');
+            $table->text('path');
             $table->timestamps();
         });
     }
