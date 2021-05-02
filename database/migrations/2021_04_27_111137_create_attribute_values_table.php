@@ -18,8 +18,9 @@ class CreateAttributeValuesTable extends Migration
             $table->text('value'); // ?
             $table->unsignedInteger('attribute_type_id');
             $table->unsignedInteger('ed_id');
-
             $table->timestamps();
+
+            $table->index(['attribute_type_id', 'ed_id']);
         });
     }
 

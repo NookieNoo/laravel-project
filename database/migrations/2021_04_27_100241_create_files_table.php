@@ -22,6 +22,8 @@ class CreateFilesTable extends Migration
             $table->unsignedInteger('ed_id');
             $table->text('path');
             $table->timestamps();
+
+            $table->index(['extension_id', 'role_id', 'ed_id']);
         });
     }
 

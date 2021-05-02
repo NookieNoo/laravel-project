@@ -13,17 +13,18 @@ class CreateEDAttributeTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ed_attribute_types', function (Blueprint $table) {
+        Schema::create('attributes', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('parent_id');
+            $table->unsignedInteger('parent_id')->nullable();
             $table->text('name');
-            $table->text('code');
-            $table->text('description');
-            $table->enum('type', [1, 2, 3, 4]);
-            $table->unsignedInteger('etalon_attr_id');
-            $table->boolean('is_etalon');
-
+            $table->text('code')->nullable();
+            $table->text('description')->nullable();
+            $table->enum('type', [1, 2, 3, 4])->nullable();
+            $table->unsignedInteger('etalon_attr_id')->nullable(); // ?? isRequired
+            $table->smallInteger('is_etalon')->nullable();
             $table->timestamps();
+
+            $table->index(['parent_id', 'etalon_attr_id']);
         });
     }
 
@@ -34,6 +35,6 @@ class CreateEDAttributeTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ed_attribute_types');
+        Schema::dropIfExists('attributes');
     }
 }

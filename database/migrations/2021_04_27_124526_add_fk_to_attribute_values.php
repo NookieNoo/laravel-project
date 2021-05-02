@@ -14,8 +14,8 @@ class AddFkToAttributeValues extends Migration
     public function up()
     {
         Schema::table('attribute_values', function (Blueprint $table) {
-            $table->foreign('attribute_type_id')->references('id')->on('ed_attribute_types');
-            $table->foreign('ed_id')->references('id')->on('electronic_documents');
+            $table->foreign('attribute_type_id')->references('id')->on('attributes');
+            $table->foreign('ed_id')->references('id')->on('eds');
         });
     }
 

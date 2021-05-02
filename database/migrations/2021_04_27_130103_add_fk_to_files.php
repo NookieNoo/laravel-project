@@ -16,7 +16,7 @@ class AddFkToFiles extends Migration
         Schema::table('files', function (Blueprint $table) {
             $table->foreign('extension_id')->references('id')->on('file_extensions');
             $table->foreign('role_id')->references('id')->on('file_roles');
-            $table->foreign('ed_id')->references('id')->on('electronic_documents');
+            $table->foreign('ed_id')->references('id')->on('eds');
         });
     }
 

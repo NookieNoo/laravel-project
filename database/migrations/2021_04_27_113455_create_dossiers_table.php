@@ -19,6 +19,8 @@ class CreateDossiersTable extends Migration
             $table->text('index');
             $table->unsignedInteger('source_id');
             $table->timestamps();
+
+            $table->index('source_id');
         });
     }
 

@@ -13,17 +13,19 @@ class CreateElectronicDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('electronic_documents', function (Blueprint $table) {
+        Schema::create('eds', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
             $table->text('number');
             $table->date('reg_date');
-            $table->unsignedInteger('document_type_id');
+            $table->unsignedInteger('ed_type_id');
             $table->unsignedInteger('source_id');
-            $table->integer('source_ed_id');
-            $table->unsignedInteger('dossier_id');
-            $table->integer('save_period');
+            $table->text('source_ed_id');
+            $table->unsignedInteger('dossier_id')->nullable();
+            $table->unsignedInteger('save_period');
             $table->timestamps();
+
+            $table->index(['ed_type_id', 'source_id', 'dossier_id']);
         });
     }
 
@@ -34,6 +36,6 @@ class CreateElectronicDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('electronic_documents');
+        Schema::dropIfExists('eds');
     }
 }

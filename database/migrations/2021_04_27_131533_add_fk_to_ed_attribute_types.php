@@ -13,9 +13,9 @@ class AddFkToEdAttributeTypes extends Migration
      */
     public function up()
     {
-        Schema::table('ed_attribute_types', function (Blueprint $table) {
-            $table->foreign('parent_id')->references('id')->on('ed_attribute_types');
-            $table->foreign('etalon_attr_id')->references('id')->on('ed_attribute_types');
+        Schema::table('attributes', function (Blueprint $table) {
+            $table->foreign('parent_id')->references('id')->on('attributes');
+            $table->foreign('etalon_attr_id')->references('id')->on('attributes');
         });
     }
 
@@ -26,7 +26,7 @@ class AddFkToEdAttributeTypes extends Migration
      */
     public function down()
     {
-        Schema::table('ed_attribute_types', function (Blueprint $table) {
+        Schema::table('attributes', function (Blueprint $table) {
             $table->dropForeign(['parent_id']);
             $table->dropForeign(['etalon_attr_id']);
         });

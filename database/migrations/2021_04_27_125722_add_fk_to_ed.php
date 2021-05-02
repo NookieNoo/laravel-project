@@ -13,8 +13,8 @@ class AddFkToEd extends Migration
      */
     public function up()
     {
-        Schema::table('electronic_documents', function (Blueprint $table) {
-            $table->foreign('document_type_id')->references('id')->on('document_types');
+        Schema::table('eds', function (Blueprint $table) {
+            $table->foreign('ed_type_id')->references('id')->on('document_types');
             $table->foreign('source_id')->references('id')->on('sources');
             $table->foreign('dossier_id')->references('id')->on('dossiers');
         });
@@ -28,7 +28,7 @@ class AddFkToEd extends Migration
     public function down()
     {
         Schema::table('electronic_documents', function (Blueprint $table) {
-            $table->dropForeign(['document_type_id']);
+            $table->dropForeign(['ed_type_id']);
             $table->dropForeign(['source_id']);
             $table->dropForeign(['dossier_id']);
         });
