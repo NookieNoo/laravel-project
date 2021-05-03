@@ -9,11 +9,13 @@ class FileRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @param Request $request
+     * @return array
      */
-    public function index(): array
+    public function index(Request $request): array
     {
         return [
-            'file_roles' => FileRole::all()
+            'file_roles' => FileRole::withFilter($request)->get()
         ];
     }
 }
