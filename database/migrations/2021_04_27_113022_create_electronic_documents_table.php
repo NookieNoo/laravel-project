@@ -22,7 +22,7 @@ class CreateElectronicDocumentsTable extends Migration
             $table->unsignedInteger('source_id');
             $table->text('source_ed_id');
             $table->unsignedInteger('dossier_id')->nullable();
-            $table->unsignedInteger('save_period');
+            $table->unsignedInteger('save_period')->default(1);
             $table->timestamps();
 
             $table->index(['ed_type_id', 'source_id', 'dossier_id']);

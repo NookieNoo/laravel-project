@@ -21,7 +21,7 @@ class CreateEDAttributeTypesTable extends Migration
             $table->text('description')->nullable();
             $table->enum('type', [1, 2, 3, 4])->nullable();
             $table->unsignedInteger('etalon_attr_id')->nullable(); // ?? isRequired
-            $table->smallInteger('is_etalon')->nullable();
+            $table->boolean('is_etalon')->nullable();
             $table->timestamps();
 
             $table->index(['parent_id', 'etalon_attr_id']);

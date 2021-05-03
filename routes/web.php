@@ -30,6 +30,6 @@ Route::prefix('ead/ead')->group(function () {
 Route::fallback(function () {
     return response()->json([
         'status' => false,
-        'message' => 'Page Not Found1.',
+        'message' => 'Page Not Found.',
     ], 404);
 });
